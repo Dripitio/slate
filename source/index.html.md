@@ -1,168 +1,90 @@
 ---
-title: API Reference
+title: Dripit Integration
 
 language_tabs:
-  - shell
-  - ruby
-  - python
+  - javascript
 
 toc_footers:
-  - <a href='#'>Sign Up for a Developer Key</a>
-  - <a href='https://github.com/tripit/slate'>Documentation Powered by Slate</a>
-
-includes:
-  - errors
+  - <a href='http://dripit.io'>Sign Up</a>
 
 search: true
 ---
 
 # Introduction
 
-Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.
+TODO: Introduction of Dripit Integration
 
-We have language bindings in Shell, Ruby, and Python! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
+# Loading dripit.js
 
-This example API documentation page was created with [Slate](https://github.com/tripit/slate). Feel free to edit it and use it as a base for your own API's documentation.
+> Add the following script into your website template's `<head>` section
 
-# Authentication
+```javascript
+<script>
+(function (r, e, a, c, h, _, l, y) {
+  r[a] = r[a] || function () {
+    (r[a].q = r[a].q || []).push(arguments);
+  };
+  // Save current timestamp.
+  r[a].t = 1 * new Date();
+  // Save access key.
+  r[a].k = h;
+  // Save endpoint
+  r[a].e = _;
 
-> To authorize, use this code:
+  // Create new async script tag.
+  l = e.createElement('script');
+  l.async = 1;
+  l.src = c;
 
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
+  // Insert it before first script tag in the page.
+  y = e.getElementsByTagName('script')[0];
+  y.parentNode.insertBefore(l, y);
+}(window, document, 'Tracker', 'https://d16ibetoxqxf3g.cloudfront.net/dripit.js.gz', '<TOKEN>', '<ENDPOINT>'));
+<script>
 ```
 
-```python
-import kittn
+> Make sure to replace <TOKEN> and <ENDPOINT> with your specific configuration.
 
-api = kittn.authorize('meowmeowmeow')
-```
+Both TOKEN and ENDPOINT currently are received after you have successfully completed registration. After completing this step correctly Dripit will start to track users pageview events.
 
-```shell
-# With shell, you can just pass the correct header with each request
-curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
-```
+# Sending Events
 
-> Make sure to replace `meowmeowmeow` with your API key.
+## Cart Events
 
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
-
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
-
-`Authorization: meowmeowmeow`
-
-<aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
-</aside>
-
-# Kittens
-
-## Get All Kittens
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
-```
-
-```shell
-curl "http://example.com/api/kittens"
-  -H "Authorization: meowmeowmeow"
-```
-
-> The above command returns JSON structured like this:
-
-```json
-[
+```javascript
+// for example
+window.Tracker('cart', {
+  token: "awsafiu2h3i5rudfgbshir34",
+  total_price: 204.99,
+  currency: 'EUR',
+  item_count: 2,
+  items: [
   {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
+    id: 58201,
+    price: 104.99,
+    title: "Kindle Paperwhite"
   },
   {
-    "id": 2,
-    "name": "Max",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
+    id: 93201,
+    price: 100.00,
+    title: "Moto G 1st gen"
   }
-]
+  ]
+});
 ```
 
-This endpoint retrieves all kittens.
+Cart info should be sent after every Page view event and when cart has been updated.
 
-### HTTP Request
+### Available parameters
 
-`GET http://example.com/api/kittens`
-
-### Query Parameters
-
-Parameter | Default | Description
---------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
-
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-
-## Get a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2"
-  -H "Authorization: meowmeowmeow"
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "id": 2,
-  "name": "Max",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
-}
-```
-
-This endpoint retrieves a specific kitten.
-
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
-
-### HTTP Request
-
-`GET http://example.com/kittens/<ID>`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to retrieve
+| Parameter     | Required?     | Example value  | Description |
+| ------------- |:-------------:|:--------------:| ----------- |
+| `total_price` | Yes           | 204.99         | Total price of items in cart |
+| `token`       | Yes           | "ag..."        | Unique cart identifier (more info below) |
+| `item_count`  | Yes           | 2              | Count of items in cart
+| `currency  `  | Yes           | 'EUR'          | Cart currency([ISO_4217 (https://en.wikipedia.org/wiki/ISO_4217#Currency_numbers)) |
+| `items`       | Yes           | Array(items)   | Array of items |
+| `items.id`    | Yes           | 53425          | Unique item id |
+| `items.price` | Yes           | 123.99         | Items price    |
+| `items.title` | Yes           | 'title'        | Items name     |
 
