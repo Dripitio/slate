@@ -73,7 +73,6 @@ window.Tracker('cart', {
 });
 ```
 
-Cart info should be sent after every Page view event and when cart has been updated.
 
 ### Available parameters
 
