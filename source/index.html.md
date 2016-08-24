@@ -49,7 +49,7 @@ Both TOKEN and ENDPOINT currently are received after you have successfully compl
 ```javascript
 // for example
 window.Tracker('cart', {
-  token: "user1",
+  customer_id: "user1",
   total_price: 204.99,
   currency: 'EUR',
   item_count: 2,
@@ -88,7 +88,7 @@ window.Tracker('cart', {
 ```javascript
 // for example
 window.Tracker('checkout', {
-  token: "user1",
+  customer_id: "user1",
   total_price: 204.99,
   currency: 'EUR',
   item_count: 2,
@@ -126,7 +126,7 @@ window.Tracker('checkout', {
 ```javascript
 // for example
 window.Tracker('order', {
-  token: "user1",
+  customer_id: "user1",
   total_price: 204.99,
   currency: 'EUR',
   item_count: 2,
