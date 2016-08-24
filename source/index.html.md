@@ -37,7 +37,7 @@ Your `SHOP_TOKEN` can be found at Dripit [integration page](http://attribution.d
 
 ```javascript
 // for example
-window.Tracker('cart', {
+window.Dripit('cart', {
   customer_id: "user1"
 });
 ```
@@ -54,7 +54,7 @@ window.Tracker('cart', {
 
 ```javascript
 // for example
-window.Tracker('checkout', {
+window.Dripit('checkout', {
   customer_id: "user1"
 });
 ```
@@ -70,7 +70,7 @@ window.Tracker('checkout', {
 
 ```javascript
 // for example
-window.Tracker('order', {
+window.Dripit('order', {
   customer_id: "user1",
   order_id: "order1",
   total_price: 204.99,
