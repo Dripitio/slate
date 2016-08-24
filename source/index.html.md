@@ -49,22 +49,7 @@ Both TOKEN and ENDPOINT currently are received after you have successfully compl
 ```javascript
 // for example
 window.Tracker('cart', {
-  customer_id: "user1",
-  total_price: 204.99,
-  currency: 'EUR',
-  item_count: 2,
-  items: [
-  {
-    id: 58201,
-    price: 104.99,
-    title: "Kindle Paperwhite"
-  },
-  {
-    id: 93201,
-    price: 100.00,
-    title: "Moto G 1st gen"
-  }
-  ]
+  customer_id: "user1"
 });
 ```
 
@@ -74,13 +59,6 @@ window.Tracker('cart', {
 | Parameter     | Required?     | Example value  | Description |
 | ------------- |:-------------:|:--------------:| ----------- |
 | `customer_id` | Yes           | "user1"        | Unique customer identifier (more info below). Set to `null` if `undefined` |
-| `total_price` | Yes           | 204.99         | Total price of items in cart |
-| `item_count`  | Yes           | 2              | Count of items in cart |
-| `currency  `  | Yes           | 'EUR'          | Cart currency([ISO_4217 (https://en.wikipedia.org/wiki/ISO_4217#Currency_numbers)) |
-| `items`       | Yes           | Array(items)   | Array of items |
-| `items.id`    | Yes           | 53425          | Unique item id |
-| `items.price` | Yes           | 123.99         | Items price    |
-| `items.title` | Yes           | 'title'        | Items name     |
 
 
 ## Checkout Events
@@ -88,22 +66,7 @@ window.Tracker('cart', {
 ```javascript
 // for example
 window.Tracker('checkout', {
-  customer_id: "user1",
-  total_price: 204.99,
-  currency: 'EUR',
-  item_count: 2,
-  items: [
-  {
-    id: 58201,
-    price: 104.99,
-    title: "Kindle Paperwhite"
-  },
-  {
-    id: 93201,
-    price: 100.00,
-    title: "Moto G 1st gen"
-  }
-  ]
+  customer_id: "user1"
 });
 ```
 
@@ -113,13 +76,6 @@ window.Tracker('checkout', {
 | Parameter     | Required?     | Example value  | Description |
 | ------------- |:-------------:|:--------------:| ----------- |
 | `customer_id` | Yes           | "user1"        | Unique customer identifier (more info below). Set to `null` if `undefined` |
-| `total_price` | Yes           | 204.99         | Total price of items in cart |
-| `item_count`  | Yes           | 2              | Count of items in cart |
-| `currency  `  | Yes           | 'EUR'          | Cart currency([ISO_4217 (https://en.wikipedia.org/wiki/ISO_4217#Currency_numbers)) |
-| `items`       | Yes           | Array(items)   | Array of items |
-| `items.id`    | Yes           | 53425          | Unique item id |
-| `items.price` | Yes           | 123.99         | Items price    |
-| `items.title` | Yes           | 'title'        | Items name     |
 
 ## Order Events
 
@@ -127,6 +83,7 @@ window.Tracker('checkout', {
 // for example
 window.Tracker('order', {
   customer_id: "user1",
+  order_id: "order1",
   total_price: 204.99,
   currency: 'EUR',
   item_count: 2,
@@ -151,11 +108,12 @@ window.Tracker('order', {
 | Parameter     | Required?     | Example value  | Description |
 | ------------- |:-------------:|:--------------:| ----------- |
 | `customer_id` | Yes           | "user1"        | Unique customer identifier (more info below). Set to `null` if `undefined` |
+| `order_id`    | Yes           | "order1"       | Unique order identifier (more info below). |
 | `total_price` | Yes           | 204.99         | Total price of items in cart |
 | `item_count`  | Yes           | 2              | Count of items in cart |
 | `currency  `  | Yes           | 'EUR'          | Cart currency([ISO_4217 (https://en.wikipedia.org/wiki/ISO_4217#Currency_numbers)) |
 | `items`       | Yes           | Array(items)   | Array of items |
-| `items.id`    | Yes           | 53425          | Unique item id |
+| `items.id`    | Yes           | 53425          | Unique item id. Optionaly set to `null`. |
 | `items.price` | Yes           | 123.99         | Items price    |
 | `items.title` | Yes           | 'title'        | Items name     |
 
