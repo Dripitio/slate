@@ -23,7 +23,7 @@ search: true
   g.async = 1, g.src = d;
   var h = b.getElementsByTagName("script")[0];
   h.parentNode.insertBefore(g, h)
-}(window, document, "Dripit", "https://d16ibetoxqxf3g.cloudfront.net/dripit.js.gz", {{SHOP_TOKEN}}, "//d1lp7mkioca5jv.cloudfront.net/1.gif"));
+}(window, document, "Tracker", "https://d16ibetoxqxf3g.cloudfront.net/dripit.js.gz", {{SHOP_TOKEN}}, "//d1lp7mkioca5jv.cloudfront.net/1.gif"));
 <script>
 ```
 
@@ -37,7 +37,7 @@ Your `SHOP_TOKEN` can be found at Dripit [integration page](http://attribution.d
 
 ```javascript
 // for example
-window.Dripit('cart', {
+window.Tracker('cart', {
   customer_id: "user1"
 });
 ```
@@ -54,7 +54,7 @@ window.Dripit('cart', {
 
 ```javascript
 // for example
-window.Dripit('checkout', {
+window.Tracker('checkout', {
   customer_id: "user1"
 });
 ```
@@ -70,7 +70,7 @@ window.Dripit('checkout', {
 
 ```javascript
 // for example
-window.Dripit('order', {
+window.Tracker('order', {
   customer_id: "user1",
   order_id: "order1",
   total_price: 204.99,
