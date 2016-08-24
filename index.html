@@ -116,11 +116,7 @@
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id="introduction">Introduction</h1>
-
-<p>TODO: Introduction of Dripit Integration</p>
-
-<h1 id="loading-dripit-js">Loading dripit.js</h1>
+        <h1 id="loading-dripit-js">Loading dripit.js</h1>
 
 <blockquote>
 <p>Add the following script into your website template&rsquo;s <code class="prettyprint">&lt;head&gt;</code> section</p>
@@ -160,7 +156,7 @@
 <h2 id="cart-events">Cart Events</h2>
 <pre class="highlight javascript"><code><span class="c1">// for example</span>
 <span class="nb">window</span><span class="p">.</span><span class="nx">Tracker</span><span class="p">(</span><span class="s1">'cart'</span><span class="p">,</span> <span class="p">{</span>
-  <span class="na">token</span><span class="p">:</span> <span class="s2">"awsafiu2h3i5rudfgbshir34"</span><span class="p">,</span>
+  <span class="na">token</span><span class="p">:</span> <span class="s2">"user1"</span><span class="p">,</span>
   <span class="na">total_price</span><span class="p">:</span> <span class="mf">204.99</span><span class="p">,</span>
   <span class="na">currency</span><span class="p">:</span> <span class="s1">'EUR'</span><span class="p">,</span>
   <span class="na">item_count</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
@@ -190,16 +186,16 @@
 </tr>
 </thead><tbody>
 <tr>
+<td><code class="prettyprint">customer_id</code></td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">&ldquo;user1&rdquo;</td>
+<td>Unique customer identifier (more info below). Set to <code class="prettyprint">null</code> if <code class="prettyprint">undefined</code></td>
+</tr>
+<tr>
 <td><code class="prettyprint">total_price</code></td>
 <td style="text-align: center">Yes</td>
 <td style="text-align: center">204.99</td>
 <td>Total price of items in cart</td>
-</tr>
-<tr>
-<td><code class="prettyprint">token</code></td>
-<td style="text-align: center">Yes</td>
-<td style="text-align: center">&ldquo;ag&hellip;&rdquo;</td>
-<td>Unique cart identifier (more info below)</td>
 </tr>
 <tr>
 <td><code class="prettyprint">item_count</code></td>
@@ -211,6 +207,170 @@
 <td><code class="prettyprint">currency</code></td>
 <td style="text-align: center">Yes</td>
 <td style="text-align: center">&lsquo;EUR&rsquo;</td>
+<td>Cart currency([ISO_4217 (https://en.wikipedia.org/wiki/ISO_4217#Currency_numbers))</td>
+</tr>
+<tr>
+<td><code class="prettyprint">items</code></td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Array(items)</td>
+<td>Array of items</td>
+</tr>
+<tr>
+<td><code class="prettyprint">items.id</code></td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">53425</td>
+<td>Unique item id</td>
+</tr>
+<tr>
+<td><code class="prettyprint">items.price</code></td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">123.99</td>
+<td>Items price</td>
+</tr>
+<tr>
+<td><code class="prettyprint">items.title</code></td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">&#39;title&rsquo;</td>
+<td>Items name</td>
+</tr>
+</tbody></table>
+
+<h2 id="checkout-events">Checkout Events</h2>
+<pre class="highlight javascript"><code><span class="c1">// for example</span>
+<span class="nb">window</span><span class="p">.</span><span class="nx">Tracker</span><span class="p">(</span><span class="s1">'checkout'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">token</span><span class="p">:</span> <span class="s2">"user1"</span><span class="p">,</span>
+  <span class="na">total_price</span><span class="p">:</span> <span class="mf">204.99</span><span class="p">,</span>
+  <span class="na">currency</span><span class="p">:</span> <span class="s1">'EUR'</span><span class="p">,</span>
+  <span class="na">item_count</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+  <span class="na">items</span><span class="p">:</span> <span class="p">[</span>
+  <span class="p">{</span>
+    <span class="na">id</span><span class="p">:</span> <span class="mi">58201</span><span class="p">,</span>
+    <span class="na">price</span><span class="p">:</span> <span class="mf">104.99</span><span class="p">,</span>
+    <span class="na">title</span><span class="p">:</span> <span class="s2">"Kindle Paperwhite"</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="na">id</span><span class="p">:</span> <span class="mi">93201</span><span class="p">,</span>
+    <span class="na">price</span><span class="p">:</span> <span class="mf">100.00</span><span class="p">,</span>
+    <span class="na">title</span><span class="p">:</span> <span class="s2">"Moto G 1st gen"</span>
+  <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">});</span>
+</code></pre>
+
+<h3 id="available-parameters">Available parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th style="text-align: center">Required?</th>
+<th style="text-align: center">Example value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">customer_id</code></td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">&ldquo;user1&rdquo;</td>
+<td>Unique customer identifier (more info below). Set to <code class="prettyprint">null</code> if <code class="prettyprint">undefined</code></td>
+</tr>
+<tr>
+<td><code class="prettyprint">total_price</code></td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">204.99</td>
+<td>Total price of items in cart</td>
+</tr>
+<tr>
+<td><code class="prettyprint">item_count</code></td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">2</td>
+<td>Count of items in cart</td>
+</tr>
+<tr>
+<td><code class="prettyprint">currency</code></td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">&#39;EUR&rsquo;</td>
+<td>Cart currency([ISO_4217 (https://en.wikipedia.org/wiki/ISO_4217#Currency_numbers))</td>
+</tr>
+<tr>
+<td><code class="prettyprint">items</code></td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Array(items)</td>
+<td>Array of items</td>
+</tr>
+<tr>
+<td><code class="prettyprint">items.id</code></td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">53425</td>
+<td>Unique item id</td>
+</tr>
+<tr>
+<td><code class="prettyprint">items.price</code></td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">123.99</td>
+<td>Items price</td>
+</tr>
+<tr>
+<td><code class="prettyprint">items.title</code></td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">&#39;title&rsquo;</td>
+<td>Items name</td>
+</tr>
+</tbody></table>
+
+<h2 id="order-events">Order Events</h2>
+<pre class="highlight javascript"><code><span class="c1">// for example</span>
+<span class="nb">window</span><span class="p">.</span><span class="nx">Tracker</span><span class="p">(</span><span class="s1">'order'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">token</span><span class="p">:</span> <span class="s2">"user1"</span><span class="p">,</span>
+  <span class="na">total_price</span><span class="p">:</span> <span class="mf">204.99</span><span class="p">,</span>
+  <span class="na">currency</span><span class="p">:</span> <span class="s1">'EUR'</span><span class="p">,</span>
+  <span class="na">item_count</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+  <span class="na">items</span><span class="p">:</span> <span class="p">[</span>
+  <span class="p">{</span>
+    <span class="na">id</span><span class="p">:</span> <span class="mi">58201</span><span class="p">,</span>
+    <span class="na">price</span><span class="p">:</span> <span class="mf">104.99</span><span class="p">,</span>
+    <span class="na">title</span><span class="p">:</span> <span class="s2">"Kindle Paperwhite"</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="na">id</span><span class="p">:</span> <span class="mi">93201</span><span class="p">,</span>
+    <span class="na">price</span><span class="p">:</span> <span class="mf">100.00</span><span class="p">,</span>
+    <span class="na">title</span><span class="p">:</span> <span class="s2">"Moto G 1st gen"</span>
+  <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">});</span>
+</code></pre>
+
+<h3 id="available-parameters">Available parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th style="text-align: center">Required?</th>
+<th style="text-align: center">Example value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">customer_id</code></td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">&ldquo;user1&rdquo;</td>
+<td>Unique customer identifier (more info below). Set to <code class="prettyprint">null</code> if <code class="prettyprint">undefined</code></td>
+</tr>
+<tr>
+<td><code class="prettyprint">total_price</code></td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">204.99</td>
+<td>Total price of items in cart</td>
+</tr>
+<tr>
+<td><code class="prettyprint">item_count</code></td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">2</td>
+<td>Count of items in cart</td>
+</tr>
+<tr>
+<td><code class="prettyprint">currency</code></td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">&#39;EUR&rsquo;</td>
 <td>Cart currency([ISO_4217 (https://en.wikipedia.org/wiki/ISO_4217#Currency_numbers))</td>
 </tr>
 <tr>
