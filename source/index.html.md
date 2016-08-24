@@ -9,11 +9,6 @@ toc_footers:
 
 search: true
 ---
-
-# Introduction
-
-TODO: Introduction of Dripit Integration
-
 # Loading dripit.js
 
 > Add the following script into your website template's `<head>` section
@@ -54,7 +49,7 @@ Both TOKEN and ENDPOINT currently are received after you have successfully compl
 ```javascript
 // for example
 window.Tracker('cart', {
-  token: "awsafiu2h3i5rudfgbshir34",
+  token: "user1",
   total_price: 204.99,
   currency: 'EUR',
   item_count: 2,
@@ -78,9 +73,86 @@ window.Tracker('cart', {
 
 | Parameter     | Required?     | Example value  | Description |
 | ------------- |:-------------:|:--------------:| ----------- |
+| `customer_id` | Yes           | "user1"        | Unique customer identifier (more info below). Set to `null` if `undefined` |
 | `total_price` | Yes           | 204.99         | Total price of items in cart |
-| `token`       | Yes           | "ag..."        | Unique cart identifier (more info below) |
-| `item_count`  | Yes           | 2              | Count of items in cart
+| `item_count`  | Yes           | 2              | Count of items in cart |
+| `currency  `  | Yes           | 'EUR'          | Cart currency([ISO_4217 (https://en.wikipedia.org/wiki/ISO_4217#Currency_numbers)) |
+| `items`       | Yes           | Array(items)   | Array of items |
+| `items.id`    | Yes           | 53425          | Unique item id |
+| `items.price` | Yes           | 123.99         | Items price    |
+| `items.title` | Yes           | 'title'        | Items name     |
+
+
+## Checkout Events
+
+```javascript
+// for example
+window.Tracker('checkout', {
+  token: "user1",
+  total_price: 204.99,
+  currency: 'EUR',
+  item_count: 2,
+  items: [
+  {
+    id: 58201,
+    price: 104.99,
+    title: "Kindle Paperwhite"
+  },
+  {
+    id: 93201,
+    price: 100.00,
+    title: "Moto G 1st gen"
+  }
+  ]
+});
+```
+
+
+### Available parameters
+
+| Parameter     | Required?     | Example value  | Description |
+| ------------- |:-------------:|:--------------:| ----------- |
+| `customer_id` | Yes           | "user1"        | Unique customer identifier (more info below). Set to `null` if `undefined` |
+| `total_price` | Yes           | 204.99         | Total price of items in cart |
+| `item_count`  | Yes           | 2              | Count of items in cart |
+| `currency  `  | Yes           | 'EUR'          | Cart currency([ISO_4217 (https://en.wikipedia.org/wiki/ISO_4217#Currency_numbers)) |
+| `items`       | Yes           | Array(items)   | Array of items |
+| `items.id`    | Yes           | 53425          | Unique item id |
+| `items.price` | Yes           | 123.99         | Items price    |
+| `items.title` | Yes           | 'title'        | Items name     |
+
+## Order Events
+
+```javascript
+// for example
+window.Tracker('order', {
+  token: "user1",
+  total_price: 204.99,
+  currency: 'EUR',
+  item_count: 2,
+  items: [
+  {
+    id: 58201,
+    price: 104.99,
+    title: "Kindle Paperwhite"
+  },
+  {
+    id: 93201,
+    price: 100.00,
+    title: "Moto G 1st gen"
+  }
+  ]
+});
+```
+
+
+### Available parameters
+
+| Parameter     | Required?     | Example value  | Description |
+| ------------- |:-------------:|:--------------:| ----------- |
+| `customer_id` | Yes           | "user1"        | Unique customer identifier (more info below). Set to `null` if `undefined` |
+| `total_price` | Yes           | 204.99         | Total price of items in cart |
+| `item_count`  | Yes           | 2              | Count of items in cart |
 | `currency  `  | Yes           | 'EUR'          | Cart currency([ISO_4217 (https://en.wikipedia.org/wiki/ISO_4217#Currency_numbers)) |
 | `items`       | Yes           | Array(items)   | Array of items |
 | `items.id`    | Yes           | 53425          | Unique item id |
