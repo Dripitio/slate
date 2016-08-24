@@ -15,32 +15,21 @@ search: true
 
 ```javascript
 <script>
-(function (r, e, a, c, h, _, l, y) {
-  r[a] = r[a] || function () {
-    (r[a].q = r[a].q || []).push(arguments);
-  };
-  // Save current timestamp.
-  r[a].t = 1 * new Date();
-  // Save access key.
-  r[a].k = h;
-  // Save endpoint
-  r[a].e = _;
-
-  // Create new async script tag.
-  l = e.createElement('script');
-  l.async = 1;
-  l.src = c;
-
-  // Insert it before first script tag in the page.
-  y = e.getElementsByTagName('script')[0];
-  y.parentNode.insertBefore(l, y);
-}(window, document, 'Tracker', 'https://d16ibetoxqxf3g.cloudfront.net/dripit.js.gz', '<TOKEN>', '<ENDPOINT>'));
+(function (a, b, c, d, e, f) {
+  a[c] = a[c] || function () {
+      (a[c].q = a[c].q || []).push(arguments)
+    }, a.DripitGlobalObject = a[c], a[c].t = 1 * new Date, a[c].k = e, a[c].e = f;
+  var g = b.createElement("script");
+  g.async = 1, g.src = d;
+  var h = b.getElementsByTagName("script")[0];
+  h.parentNode.insertBefore(g, h)
+}(window, document, "Dripit", "https://d16ibetoxqxf3g.cloudfront.net/dripit.js.gz", {{SHOP_TOKEN}}, "//d1lp7mkioca5jv.cloudfront.net/1.gif"));
 <script>
 ```
 
-> Make sure to replace <TOKEN> and <ENDPOINT> with your specific configuration.
+> Make sure to set `SHOP_TOKEN`!
 
-Both TOKEN and ENDPOINT currently are received after you have successfully completed registration. After completing this step correctly Dripit will start to track users pageview events.
+Your `SHOP_TOKEN` can be found at Dripit [integration page](http://attribution.dripit.io/auth/integration) in your profile.
 
 # Sending Events
 
@@ -85,7 +74,7 @@ window.Tracker('order', {
   customer_id: "user1",
   order_id: "order1",
   total_price: 204.99,
-  currency: 'EUR',
+  currency: "EUR",
   item_count: 2,
   items: [
   {
@@ -111,9 +100,9 @@ window.Tracker('order', {
 | `order_id`    | Yes           | "order1"       | Unique order identifier (more info below). |
 | `total_price` | Yes           | 204.99         | Total price of items in cart |
 | `item_count`  | Yes           | 2              | Count of items in cart |
-| `currency  `  | Yes           | 'EUR'          | Cart currency([ISO_4217 (https://en.wikipedia.org/wiki/ISO_4217#Currency_numbers)) |
+| `currency  `  | Yes           | "EUR"          | Cart currency([ISO_4217](https://en.wikipedia.org/wiki/ISO_4217#Currency_numbers)) |
 | `items`       | Yes           | Array(items)   | Array of items |
 | `items.id`    | Yes           | 53425          | Unique item id. Optionaly set to `null`. |
 | `items.price` | Yes           | 123.99         | Items price    |
-| `items.title` | Yes           | 'title'        | Items name     |
+| `items.title` | Yes           | "title"        | Items name     |
 
