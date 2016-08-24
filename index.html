@@ -122,34 +122,23 @@
 <p>Add the following script into your website template&rsquo;s <code class="prettyprint">&lt;head&gt;</code> section</p>
 </blockquote>
 <pre class="highlight javascript"><code><span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span>
-<span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">r</span><span class="p">,</span> <span class="nx">e</span><span class="p">,</span> <span class="nx">a</span><span class="p">,</span> <span class="nx">c</span><span class="p">,</span> <span class="nx">h</span><span class="p">,</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">l</span><span class="p">,</span> <span class="nx">y</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">r</span><span class="p">[</span><span class="nx">a</span><span class="p">]</span> <span class="o">=</span> <span class="nx">r</span><span class="p">[</span><span class="nx">a</span><span class="p">]</span> <span class="o">||</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-    <span class="p">(</span><span class="nx">r</span><span class="p">[</span><span class="nx">a</span><span class="p">].</span><span class="nx">q</span> <span class="o">=</span> <span class="nx">r</span><span class="p">[</span><span class="nx">a</span><span class="p">].</span><span class="nx">q</span> <span class="o">||</span> <span class="p">[]).</span><span class="nx">push</span><span class="p">(</span><span class="nx">arguments</span><span class="p">);</span>
-  <span class="p">};</span>
-  <span class="c1">// Save current timestamp.</span>
-  <span class="nx">r</span><span class="p">[</span><span class="nx">a</span><span class="p">].</span><span class="nx">t</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">*</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">();</span>
-  <span class="c1">// Save access key.</span>
-  <span class="nx">r</span><span class="p">[</span><span class="nx">a</span><span class="p">].</span><span class="nx">k</span> <span class="o">=</span> <span class="nx">h</span><span class="p">;</span>
-  <span class="c1">// Save endpoint</span>
-  <span class="nx">r</span><span class="p">[</span><span class="nx">a</span><span class="p">].</span><span class="nx">e</span> <span class="o">=</span> <span class="nx">_</span><span class="p">;</span>
-
-  <span class="c1">// Create new async script tag.</span>
-  <span class="nx">l</span> <span class="o">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">'script'</span><span class="p">);</span>
-  <span class="nx">l</span><span class="p">.</span><span class="nx">async</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-  <span class="nx">l</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="nx">c</span><span class="p">;</span>
-
-  <span class="c1">// Insert it before first script tag in the page.</span>
-  <span class="nx">y</span> <span class="o">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">'script'</span><span class="p">)[</span><span class="mi">0</span><span class="p">];</span>
-  <span class="nx">y</span><span class="p">.</span><span class="nx">parentNode</span><span class="p">.</span><span class="nx">insertBefore</span><span class="p">(</span><span class="nx">l</span><span class="p">,</span> <span class="nx">y</span><span class="p">);</span>
-<span class="p">}(</span><span class="nb">window</span><span class="p">,</span> <span class="nb">document</span><span class="p">,</span> <span class="s1">'Tracker'</span><span class="p">,</span> <span class="s1">'https://d16ibetoxqxf3g.cloudfront.net/dripit.js.gz'</span><span class="p">,</span> <span class="s1">'&lt;TOKEN&gt;'</span><span class="p">,</span> <span class="s1">'&lt;ENDPOINT&gt;'</span><span class="p">));</span>
+<span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="nx">c</span><span class="p">,</span> <span class="nx">d</span><span class="p">,</span> <span class="nx">e</span><span class="p">,</span> <span class="nx">f</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">a</span><span class="p">[</span><span class="nx">c</span><span class="p">]</span> <span class="o">=</span> <span class="nx">a</span><span class="p">[</span><span class="nx">c</span><span class="p">]</span> <span class="o">||</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+      <span class="p">(</span><span class="nx">a</span><span class="p">[</span><span class="nx">c</span><span class="p">].</span><span class="nx">q</span> <span class="o">=</span> <span class="nx">a</span><span class="p">[</span><span class="nx">c</span><span class="p">].</span><span class="nx">q</span> <span class="o">||</span> <span class="p">[]).</span><span class="nx">push</span><span class="p">(</span><span class="nx">arguments</span><span class="p">)</span>
+    <span class="p">},</span> <span class="nx">a</span><span class="p">.</span><span class="nx">DripitGlobalObject</span> <span class="o">=</span> <span class="nx">a</span><span class="p">[</span><span class="nx">c</span><span class="p">],</span> <span class="nx">a</span><span class="p">[</span><span class="nx">c</span><span class="p">].</span><span class="nx">t</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">*</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">,</span> <span class="nx">a</span><span class="p">[</span><span class="nx">c</span><span class="p">].</span><span class="nx">k</span> <span class="o">=</span> <span class="nx">e</span><span class="p">,</span> <span class="nx">a</span><span class="p">[</span><span class="nx">c</span><span class="p">].</span><span class="nx">e</span> <span class="o">=</span> <span class="nx">f</span><span class="p">;</span>
+  <span class="kd">var</span> <span class="nx">g</span> <span class="o">=</span> <span class="nx">b</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s2">"script"</span><span class="p">);</span>
+  <span class="nx">g</span><span class="p">.</span><span class="nx">async</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">g</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="nx">d</span><span class="p">;</span>
+  <span class="kd">var</span> <span class="nx">h</span> <span class="o">=</span> <span class="nx">b</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s2">"script"</span><span class="p">)[</span><span class="mi">0</span><span class="p">];</span>
+  <span class="nx">h</span><span class="p">.</span><span class="nx">parentNode</span><span class="p">.</span><span class="nx">insertBefore</span><span class="p">(</span><span class="nx">g</span><span class="p">,</span> <span class="nx">h</span><span class="p">)</span>
+<span class="p">}(</span><span class="nb">window</span><span class="p">,</span> <span class="nb">document</span><span class="p">,</span> <span class="s2">"Dripit"</span><span class="p">,</span> <span class="s2">"https://d16ibetoxqxf3g.cloudfront.net/dripit.js.gz"</span><span class="p">,</span> <span class="p">{{</span><span class="nx">SHOP_TOKEN</span><span class="p">}},</span> <span class="s2">"//d1lp7mkioca5jv.cloudfront.net/1.gif"</span><span class="p">));</span>
 <span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span>
 </code></pre>
 
 <blockquote>
-<p>Make sure to replace <TOKEN> and <ENDPOINT> with your specific configuration.</p>
+<p>Make sure to set <code class="prettyprint">SHOP_TOKEN</code>!</p>
 </blockquote>
 
-<p>Both TOKEN and ENDPOINT currently are received after you have successfully completed registration. After completing this step correctly Dripit will start to track users pageview events.</p>
+<p>Your <code class="prettyprint">SHOP_TOKEN</code> can be found at Dripit <a href="http://attribution.dripit.io/auth/integration">integration page</a> in your profile.</p>
 
 <h1 id="sending-events">Sending Events</h1>
 
@@ -209,7 +198,7 @@
   <span class="na">customer_id</span><span class="p">:</span> <span class="s2">"user1"</span><span class="p">,</span>
   <span class="na">order_id</span><span class="p">:</span> <span class="s2">"order1"</span><span class="p">,</span>
   <span class="na">total_price</span><span class="p">:</span> <span class="mf">204.99</span><span class="p">,</span>
-  <span class="na">currency</span><span class="p">:</span> <span class="s1">'EUR'</span><span class="p">,</span>
+  <span class="na">currency</span><span class="p">:</span> <span class="s2">"EUR"</span><span class="p">,</span>
   <span class="na">item_count</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
   <span class="na">items</span><span class="p">:</span> <span class="p">[</span>
   <span class="p">{</span>
@@ -263,8 +252,8 @@
 <tr>
 <td><code class="prettyprint">currency</code></td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">&lsquo;EUR&rsquo;</td>
-<td>Cart currency([ISO_4217 (https://en.wikipedia.org/wiki/ISO_4217#Currency_numbers))</td>
+<td style="text-align: center">&ldquo;EUR&rdquo;</td>
+<td>Cart currency(<a href="https://en.wikipedia.org/wiki/ISO_4217#Currency_numbers">ISO_4217</a>)</td>
 </tr>
 <tr>
 <td><code class="prettyprint">items</code></td>
@@ -287,7 +276,7 @@
 <tr>
 <td><code class="prettyprint">items.title</code></td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">&#39;title&rsquo;</td>
+<td style="text-align: center">&ldquo;title&rdquo;</td>
 <td>Items name</td>
 </tr>
 </tbody></table>
