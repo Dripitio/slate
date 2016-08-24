@@ -97,7 +97,7 @@ window.Tracker('order', {
 | Parameter     | Required?     | Example value  | Description |
 | ------------- |:-------------:|:--------------:| ----------- |
 | `customer_id` | Yes           | "user1"        | Unique customer identifier (more info below). Set to `null` if `undefined` |
-| `order_id`    | Yes           | "order1"       | Unique order identifier (more info below). |
+| `order_id`    | Yes           | "order1"       | Unique order identifier. All orders should have unique order identifiers |
 | `total_price` | Yes           | 204.99         | Total price of items in cart |
 | `item_count`  | Yes           | 2              | Count of items in cart |
 | `currency  `  | Yes           | "EUR"          | Cart currency([ISO_4217](https://en.wikipedia.org/wiki/ISO_4217#Currency_numbers)) |
